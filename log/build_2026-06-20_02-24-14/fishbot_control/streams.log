@@ -1,0 +1,22 @@
+[0.563s] Invoking command in '/home/adhiraj/fishbot_ws/src/fishbot_control': PYTHONPATH=/home/adhiraj/fishbot_ws/build/fishbot_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/adhiraj/fishbot_ws/install/fishbot_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/fishbot_control build --build-base /home/adhiraj/fishbot_ws/build/fishbot_control/build install --record /home/adhiraj/fishbot_ws/build/fishbot_control/install.log --single-version-externally-managed install_data
+[0.765s] running egg_info
+[0.765s] writing ../../build/fishbot_control/fishbot_control.egg-info/PKG-INFO
+[0.765s] writing dependency_links to ../../build/fishbot_control/fishbot_control.egg-info/dependency_links.txt
+[0.766s] writing entry points to ../../build/fishbot_control/fishbot_control.egg-info/entry_points.txt
+[0.766s] writing requirements to ../../build/fishbot_control/fishbot_control.egg-info/requires.txt
+[0.766s] writing top-level names to ../../build/fishbot_control/fishbot_control.egg-info/top_level.txt
+[0.767s] reading manifest file '../../build/fishbot_control/fishbot_control.egg-info/SOURCES.txt'
+[0.768s] writing manifest file '../../build/fishbot_control/fishbot_control.egg-info/SOURCES.txt'
+[0.768s] running build
+[0.768s] running build_py
+[0.768s] running install
+[0.769s] running install_lib
+[0.770s] running install_data
+[0.770s] running install_egg_info
+[0.772s] removing '/home/adhiraj/fishbot_ws/install/fishbot_control/lib/python3.10/site-packages/fishbot_control-0.0.0-py3.10.egg-info' (and everything under it)
+[0.772s] Copying ../../build/fishbot_control/fishbot_control.egg-info to /home/adhiraj/fishbot_ws/install/fishbot_control/lib/python3.10/site-packages/fishbot_control-0.0.0-py3.10.egg-info
+[0.774s] running install_scripts
+[0.790s] Installing swim_listener script to /home/adhiraj/fishbot_ws/install/fishbot_control/lib/fishbot_control
+[0.790s] Installing swim_publisher script to /home/adhiraj/fishbot_ws/install/fishbot_control/lib/fishbot_control
+[0.790s] writing list of installed files to '/home/adhiraj/fishbot_ws/build/fishbot_control/install.log'
+[0.810s] Invoked command in '/home/adhiraj/fishbot_ws/src/fishbot_control' returned '0': PYTHONPATH=/home/adhiraj/fishbot_ws/build/fishbot_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/adhiraj/fishbot_ws/install/fishbot_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/fishbot_control build --build-base /home/adhiraj/fishbot_ws/build/fishbot_control/build install --record /home/adhiraj/fishbot_ws/build/fishbot_control/install.log --single-version-externally-managed install_data

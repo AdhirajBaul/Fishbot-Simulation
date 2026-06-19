@@ -1,0 +1,14 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    tail_position_controller:
+      type: position_controllers/JointGroupPositionController
+
+tail_position_controller:
+  ros__parameters:
+    joints:
+      - tail_joint

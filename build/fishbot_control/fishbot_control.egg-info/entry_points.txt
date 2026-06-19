@@ -1,0 +1,4 @@
+[console_scripts]
+swim_listener = fishbot_control.swim_command_listener:main
+swim_publisher = fishbot_control.swim_command_publisher:main
+

@@ -1,0 +1,44 @@
+[0.037s] Invoking command in '/home/adhiraj/fishbot_ws/build/fishbot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/adhiraj/fishbot_ws/install/fishbot_control:/opt/ros/humble /usr/bin/cmake /home/adhiraj/fishbot_ws/src/fishbot_description -DCMAKE_INSTALL_PREFIX=/home/adhiraj/fishbot_ws/install/fishbot_description
+[0.680s] -- The C compiler identification is GNU 11.4.0
+[2.021s] -- The CXX compiler identification is GNU 11.4.0
+[3.097s] -- Detecting C compiler ABI info
+[3.527s] -- Detecting C compiler ABI info - done
+[3.543s] -- Check for working C compiler: /usr/bin/cc - skipped
+[3.608s] -- Detecting C compile features
+[3.609s] -- Detecting C compile features - done
+[3.618s] -- Detecting CXX compiler ABI info
+[4.014s] -- Detecting CXX compiler ABI info - done
+[4.029s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[4.030s] -- Detecting CXX compile features
+[4.031s] -- Detecting CXX compile features - done
+[4.117s] -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+[4.521s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[4.770s] -- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[4.957s] -- Added test 'flake8' to check Python code syntax and style conventions
+[4.961s] -- Added test 'lint_cmake' to check CMake code style
+[4.964s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[4.971s] -- Added test 'xmllint' to check XML markup files
+[4.978s] -- Configuring done
+[4.999s] -- Generating done
+[5.007s] -- Build files have been written to: /home/adhiraj/fishbot_ws/build/fishbot_description
+[5.020s] Invoked command in '/home/adhiraj/fishbot_ws/build/fishbot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/adhiraj/fishbot_ws/install/fishbot_control:/opt/ros/humble /usr/bin/cmake /home/adhiraj/fishbot_ws/src/fishbot_description -DCMAKE_INSTALL_PREFIX=/home/adhiraj/fishbot_ws/install/fishbot_description
+[5.021s] Invoking command in '/home/adhiraj/fishbot_ws/build/fishbot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/adhiraj/fishbot_ws/install/fishbot_control:/opt/ros/humble /usr/bin/cmake --build /home/adhiraj/fishbot_ws/build/fishbot_description -- -j16 -l16
+[5.104s] Invoked command in '/home/adhiraj/fishbot_ws/build/fishbot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/adhiraj/fishbot_ws/install/fishbot_control:/opt/ros/humble /usr/bin/cmake --build /home/adhiraj/fishbot_ws/build/fishbot_description -- -j16 -l16
+[5.126s] Invoking command in '/home/adhiraj/fishbot_ws/build/fishbot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/adhiraj/fishbot_ws/install/fishbot_control:/opt/ros/humble /usr/bin/cmake --install /home/adhiraj/fishbot_ws/build/fishbot_description
+[5.142s] -- Install configuration: ""
+[5.148s] -- Installing: /home/adhiraj/fishbot_ws/install/fishbot_description/share/ament_index/resource_index/package_run_dependencies/fishbot_description
+[5.150s] -- Installing: /home/adhiraj/fishbot_ws/install/fishbot_description/share/ament_index/resource_index/parent_prefix_path/fishbot_description
+[5.152s] -- Installing: /home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/environment/ament_prefix_path.sh
+[5.153s] -- Installing: /home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/environment/ament_prefix_path.dsv
+[5.154s] -- Installing: /home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/environment/path.sh
+[5.155s] -- Installing: /home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/environment/path.dsv
+[5.156s] -- Installing: /home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/local_setup.bash
+[5.157s] -- Installing: /home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/local_setup.sh
+[5.158s] -- Installing: /home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/local_setup.zsh
+[5.158s] -- Installing: /home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/local_setup.dsv
+[5.159s] -- Installing: /home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/package.dsv
+[5.161s] -- Installing: /home/adhiraj/fishbot_ws/install/fishbot_description/share/ament_index/resource_index/packages/fishbot_description
+[5.163s] -- Installing: /home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/cmake/fishbot_descriptionConfig.cmake
+[5.163s] -- Installing: /home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/cmake/fishbot_descriptionConfig-version.cmake
+[5.164s] -- Installing: /home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/package.xml
+[5.170s] Invoked command in '/home/adhiraj/fishbot_ws/build/fishbot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/adhiraj/fishbot_ws/install/fishbot_control:/opt/ros/humble /usr/bin/cmake --install /home/adhiraj/fishbot_ws/build/fishbot_description

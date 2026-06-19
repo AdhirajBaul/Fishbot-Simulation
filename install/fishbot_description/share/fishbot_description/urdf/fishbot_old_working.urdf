@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Assem1">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-2.91437028186268E-19 1.18370772254283E-05 0.0100030360132434"
+        rpy="0 0 0" />
+      <mass
+        value="0.124174858714471" />
+      <inertia
+        ixx="6.70811552955112E-05"
+        ixy="-1.48615499098932E-24"
+        ixz="2.70023479146512E-21"
+        iyy="6.70249603207372E-05"
+        iyz="-4.1886758136837E-08"
+        izz="0.000118952636729566" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Link 1">
+    <inertial>
+      <origin
+        xyz="-0.079040997435193 -0.0126220688539358 -0.00899999999999997"
+        rpy="0 0 0" />
+      <mass
+        value="0.0111235467885663" />
+      <inertia
+        ixx="9.35715898738451E-07"
+        ixy="-1.1242334144548E-06"
+        ixz="1.65315157061408E-21"
+        iyy="2.98894879109515E-06"
+        iyz="9.41381045940702E-22"
+        izz="3.73927224335749E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1/meshes/Link 1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1/meshes/Link 1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Link 1"
+    type="prismatic">
+    <origin
+      xyz="0 0 0"
+      rpy="1.5708 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link 1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Link 2">
+    <inertial>
+      <origin
+        xyz="-0.101035610723349 -0.0346562664638929 -0.019"
+        rpy="0 0 0" />
+      <mass
+        value="0.0106948399443057" />
+      <inertia
+        ixx="2.44890010995968E-06"
+        ixy="-7.68193674390109E-07"
+        ixz="2.6312620890143E-22"
+        iyy="7.57041304437714E-07"
+        iyz="4.59898541875145E-23"
+        izz="3.0276940819923E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1/meshes/Link 2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1/meshes/Link 2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Link 2"
+    type="prismatic">
+    <origin
+      xyz="0 0 0"
+      rpy="1.5708 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link 2" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Link 3">
+    <inertial>
+      <origin
+        xyz="-0.131103839857457 -0.0563912408291346 -0.00899999999999966"
+        rpy="0 0 0" />
+      <mass
+        value="0.00487673528697127" />
+      <inertia
+        ixx="7.89032550025372E-08"
+        ixy="5.04212080312583E-08"
+        ixz="4.44493689401201E-21"
+        iyy="1.44607631847563E-06"
+        iyz="-1.5710735538427E-22"
+        izz="1.44370065202865E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1/meshes/Link 3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1/meshes/Link 3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Link 3"
+    type="prismatic">
+    <origin
+      xyz="0 0 0"
+      rpy="1.5708 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link 3" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>

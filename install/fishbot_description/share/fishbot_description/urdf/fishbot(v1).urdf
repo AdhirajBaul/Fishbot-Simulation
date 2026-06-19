@@ -1,0 +1,76 @@
+<!-- This Urdf version consists of the 1st itteration of the Fishbot -->
+<!-- documentation accurate structure -->
+<?xml version="1.0"?>
+<robot name="fishbot">
+
+  <!-- Base Link -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.3 0.15 0.1"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="blue">
+        <color rgba="0.2 0.4 0.8 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.3 0.15 0.1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- Tail Link -->
+  <link name="tail_link">
+    <visual>
+      <!-- Rotated 90° about Y so the wide face displaces water sideways -->
+      <origin xyz="-0.08 0 0"
+              rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <box size="0.16 0.18 0.02"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1 0.3 0.3 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.08 0 0"
+              rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <box size="0.16 0.18 0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.2"/>
+      <origin xyz="-0.08 0 0"/>
+      <inertia
+        ixx="0.001"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.001"
+        iyz="0.0"
+        izz="0.001"/>
+    </inertial>
+  </link>
+
+  <!-- Joint connecting base to tail -->
+ <joint name="tail_joint" type="revolute">
+  <origin xyz="-0.15 0 0"/>
+  <parent link="base_link"/>
+  <child link="tail_link"/>
+
+  <axis xyz="0 0 1"/>
+
+  <limit
+      lower="-0.7"
+      upper="0.7"
+      effort="10"
+      velocity="4"/>
+</joint>
+
+</robot>
