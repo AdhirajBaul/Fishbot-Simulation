@@ -1,5 +1,7 @@
 # Fishbot
 
+![Fishbot](images/fishbot1.png)
+
 A fish-inspired robot simulation built using ROS2 Humble and Gazebo Classic.
 
 ## Current Features
