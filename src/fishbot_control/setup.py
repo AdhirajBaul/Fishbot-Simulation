@@ -31,6 +31,8 @@ setup(
         'console_scripts': [
             'swim_publisher = fishbot_control.swim_command_publisher:main',
             'swim_listener = fishbot_control.swim_command_listener:main',
+            'fish_swimmer = fishbot_control.fish_swimmer:main',
+            'fish_teleop = fishbot_control.fish_teleop:main',
         ],
     },
 )

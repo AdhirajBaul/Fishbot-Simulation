@@ -9,6 +9,8 @@ setup.py
 ../../build/fishbot_control/fishbot_control.egg-info/top_level.txt
 ../../build/fishbot_control/fishbot_control.egg-info/zip-safe
 fishbot_control/__init__.py
+fishbot_control/fish_swimmer.py
+fishbot_control/fish_teleop.py
 fishbot_control/swim_command_listener.py
 fishbot_control/swim_command_publisher.py
 resource/fishbot_control

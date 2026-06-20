@@ -1,4 +1,4 @@
-/home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/urdf/fishbot.urdf
+/home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/urdf/fishbot.urdf.xacro
 /home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/urdf/fishbot_old_working.urdf
 /home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/urdf/fishbot(v1).urdf
 /home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/urdf/fishbot(v2).urdf

@@ -1,4 +1,6 @@
 [console_scripts]
+fish_swimmer = fishbot_control.fish_swimmer:main
+fish_teleop = fishbot_control.fish_teleop:main
 swim_listener = fishbot_control.swim_command_listener:main
 swim_publisher = fishbot_control.swim_command_publisher:main
 

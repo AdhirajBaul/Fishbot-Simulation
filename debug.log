@@ -1,0 +1,51 @@
+[INFO] [launch]: All log files can be found below /home/adhiraj/.ros/log/2026-06-20-03-57-40-674791-AdhirajAsus-55627
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [gazebo-1]: process started with pid [55629]
+[INFO] [robot_state_publisher-2]: process started with pid [55631]
+[INFO] [spawn_entity.py-3]: process started with pid [55633]
+[robot_state_publisher-2] [WARN] [1781908060.931708209] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[robot_state_publisher-2] [INFO] [1781908060.931988863] [robot_state_publisher]: got segment base_link
+[robot_state_publisher-2] [INFO] [1781908060.932148103] [robot_state_publisher]: got segment left_fin_link
+[robot_state_publisher-2] [INFO] [1781908060.932179792] [robot_state_publisher]: got segment right_fin_link
+[robot_state_publisher-2] [INFO] [1781908060.932199325] [robot_state_publisher]: got segment tail_link
+[gazebo-1] Gazebo multi-robot simulator, version 11.10.2
+[gazebo-1] Copyright (C) 2012 Open Source Robotics Foundation.
+[gazebo-1] Released under the Apache 2 License.
+[gazebo-1] http://gazebosim.org
+[gazebo-1] 
+[gazebo-1] Gazebo multi-robot simulator, version 11.10.2
+[gazebo-1] Copyright (C) 2012 Open Source Robotics Foundation.
+[gazebo-1] Released under the Apache 2 License.
+[gazebo-1] http://gazebosim.org
+[gazebo-1] 
+[spawn_entity.py-3] [INFO] [1781908061.791299515] [spawn_entity]: Spawn Entity started
+[spawn_entity.py-3] [INFO] [1781908061.793844378] [spawn_entity]: Loading entity published on topic robot_description
+[spawn_entity.py-3] [INFO] [1781908061.799224686] [spawn_entity]: Waiting for entity xml on robot_description
+[spawn_entity.py-3] [INFO] [1781908061.814079481] [spawn_entity]: Waiting for service /spawn_entity, timeout = 30
+[spawn_entity.py-3] [INFO] [1781908061.815524219] [spawn_entity]: Waiting for service /spawn_entity
+[gazebo-1] ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+[gazebo-1] ALSA lib conf.c:5178:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+[gazebo-1] ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+[gazebo-1] ALSA lib conf.c:5178:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+[gazebo-1] ALSA lib confmisc.c:1334:(snd_func_refer) error evaluating name
+[gazebo-1] ALSA lib conf.c:5178:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+[gazebo-1] ALSA lib conf.c:5701:(snd_config_expand) Evaluate error: No such file or directory
+[gazebo-1] ALSA lib pcm.c:2664:(snd_pcm_open_noupdate) Unknown PCM default
+[gazebo-1] AL lib: (EE) ALCplaybackAlsa_open: Could not open playback device 'default': No such file or directory
+[gazebo-1] [1;31m[Err] [OpenAL.cc:84] [0m[1;31mUnable to open audio device[[0m[1;31mdefault[0m[1;31m]
+[gazebo-1]  Audio will be disabled.
+[gazebo-1] [1;32m[Msg] [0m[1;32mWaiting for master.[0m[1;32m
+[gazebo-1] [0m[1;32m[0m[1;32m[0m[1;32m[Msg] [0m[1;32mConnected to gazebo master @ [0m[1;32mhttp://127.0.0.1:11345[0m[1;32m
+[gazebo-1] [0m[1;32m[0m[1;32m[0m[1;32m[Msg] [0m[1;32mPublicized address: [0m[1;32m10.255.255.254[0m[1;32m
+[gazebo-1] [0m[1;32m[0m[1;32m[0m[1;32m[Msg] [0m[1;32mLoading world file [[0m[1;32m/home/adhiraj/fishbot_ws/install/fishbot_description/share/fishbot_description/worlds/ocean.world[0m[1;32m][0m[1;32m
+[gazebo-1] [0m[INFO] [1781908067.682673383] [gazebo_ros_node]: ROS was initialized without arguments.
+[spawn_entity.py-3] [INFO] [1781908068.118422921] [spawn_entity]: Calling service /spawn_entity
+[spawn_entity.py-3] [INFO] [1781908068.557695008] [spawn_entity]: Spawn status: SpawnEntity: Successfully spawned entity [fishbot]
+[gazebo-1] [INFO] [1781908068.607687442] [gazebo_ros2_control]: Loading gazebo_ros2_control plugin
+[gazebo-1] [INFO] [1781908068.621892936] [gazebo_ros2_control]: Starting gazebo_ros2_control plugin in namespace: /
+[gazebo-1] [INFO] [1781908068.622589291] [gazebo_ros2_control]: Starting gazebo_ros2_control plugin in ros 2 node: gazebo_ros2_control
+[gazebo-1] [INFO] [1781908068.634286722] [gazebo_ros2_control]: connected to service!! robot_state_publisher
+[gazebo-1] [INFO] [1781908068.636191819] [gazebo_ros2_control]: Received urdf from param server, parsing...
+[gazebo-1] [ERROR] [1781908068.636408256] [gazebo_ros2_control]: No parameter file provided. Configuration might be wrong
+[gazebo-1] [ERROR] [1781908068.637407313] [gazebo_ros2_control]: failed to parse input yaml file(s)
+[INFO] [spawn_entity.py-3]: process has finished cleanly [pid 55633]

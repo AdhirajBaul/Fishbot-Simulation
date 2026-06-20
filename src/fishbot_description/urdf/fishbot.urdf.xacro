@@ -249,6 +249,8 @@
 
     <hardware>
       <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+      <param name="robot_param">robot_description</param>
+      <param name="robot_param_node">robot_state_publisher</param>
     </hardware>
 
     <!-- Tail Joint -->
@@ -277,19 +279,20 @@
 
   </ros2_control>
 
-  <!-- ================================================= -->
-  <!-- Gazebo Plugin -->
-  <!-- ================================================= -->
+<!-- ================================================= -->
+<!-- Gazebo Plugin -->
+<!-- ================================================= -->
 
-  <gazebo>
-    <plugin
-        name="gazebo_ros2_control"
-        filename="libgazebo_ros2_control.so">
-    </plugin>
+<gazebo>
+  <plugin
+      name="gazebo_ros2_control"
+      filename="libgazebo_ros2_control.so">
+
     <parameters>
-    /home/adhiraj/fishbot_ws/src/fishbot_description/config/fishbot_controllers.yaml
+      $(find fishbot_description)/config/fishbot_controllers.yaml
     </parameters>
 
-  </gazebo>
+  </plugin>
+</gazebo>
 
 </robot>

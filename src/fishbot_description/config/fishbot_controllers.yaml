@@ -8,7 +8,26 @@ controller_manager:
     tail_position_controller:
       type: position_controllers/JointGroupPositionController
 
+    left_fin_controller:
+      type: position_controllers/JointGroupPositionController
+
+    right_fin_controller:
+      type: position_controllers/JointGroupPositionController
+
+
 tail_position_controller:
   ros__parameters:
     joints:
       - tail_joint
+
+
+left_fin_controller:
+  ros__parameters:
+    joints:
+      - left_fin_joint
+
+
+right_fin_controller:
+  ros__parameters:
+    joints:
+      - right_fin_joint
