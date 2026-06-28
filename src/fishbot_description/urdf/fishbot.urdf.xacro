@@ -27,15 +27,16 @@
 
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <mass value="1.0"/>
+
+      <mass value="4.00"/>
 
       <inertia
-        ixx="0.01"
-        ixy="0"
-        ixz="0"
-        iyy="0.01"
-        iyz="0"
-        izz="0.01"/>
+          ixx="0.01208"
+          ixy="0"
+          ixz="0"
+          iyy="0.03333"
+          iyz="0"
+          izz="0.03750"/>
     </inertial>
 
   </link>
@@ -72,17 +73,16 @@
       <origin xyz="-0.06 0 0"
               rpy="0 0 0"/>
 
-      <mass value="0.2"/>
+      <mass value="0.15"/>
 
       <inertia
-        ixx="0.001"
-        ixy="0"
-        ixz="0"
-        iyy="0.001"
-        iyz="0"
-        izz="0.001"/>
+          ixx="0.000216"
+          ixy="0"
+          ixz="0"
+          iyy="0.000130"
+          iyz="0"
+          izz="0.000336"/>
     </inertial>
-
   </link>
 
   <!-- Tail Joint -->
@@ -139,16 +139,16 @@
       <origin xyz="0 0.03 0"
               rpy="0 0 0"/>
 
-      <mass value="0.05"/>
+      <mass value="0.03"/>
 
       <inertia
-        ixx="0.0001"
-        ixy="0"
-        ixz="0"
-        iyy="0.0001"
-        iyz="0"
-        izz="0.0001"/>
-    </inertial>
+          ixx="0.0000097"
+          ixy="0"
+          ixz="0"
+          iyy="0.0000128"
+          iyz="0"
+          izz="0.0000213"/>
+      </inertial>
 
   </link>
 
@@ -206,16 +206,16 @@
       <origin xyz="0 -0.03 0"
               rpy="0 0 0"/>
 
-      <mass value="0.05"/>
+      <mass value="0.03"/>
 
       <inertia
-        ixx="0.0001"
-        ixy="0"
-        ixz="0"
-        iyy="0.0001"
-        iyz="0"
-        izz="0.0001"/>
-    </inertial>
+          ixx="0.0000097"
+          ixy="0"
+          ixz="0"
+          iyy="0.0000128"
+          iyz="0"
+          izz="0.0000213"/>
+      </inertial>
 
   </link>
 
@@ -283,6 +283,8 @@
 <!-- Gazebo Plugin -->
 <!-- ================================================= -->
 
+
+
 <gazebo>
   <plugin
       name="gazebo_ros2_control"
@@ -292,6 +294,27 @@
       $(find fishbot_description)/config/fishbot_controllers.yaml
     </parameters>
 
+  </plugin>
+</gazebo>
+
+<gazebo>
+  <plugin
+      name="fishbot_buoyancy"
+      filename="libbuoyancy_plugin.so">
+  </plugin>
+</gazebo>
+
+<gazebo>
+  <plugin
+      name="fishbot_drag"
+      filename="libdrag_plugin.so">
+  </plugin>
+</gazebo>
+
+<gazebo>
+  <plugin
+      name="fishbot_thrust"
+      filename="libthrust_plugin.so">
   </plugin>
 </gazebo>
 

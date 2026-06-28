@@ -31,3 +31,4 @@ right_fin_controller:
   ros__parameters:
     joints:
       - right_fin_joint
+
