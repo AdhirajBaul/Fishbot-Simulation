@@ -8,7 +8,6 @@ namespace gazebo
 class BuoyancyPlugin : public ModelPlugin
 {
 public:
-
     void Load(physics::ModelPtr _model, sdf::ElementPtr)
     {
         model_ = _model;
@@ -21,37 +20,64 @@ public:
             return;
         }
 
+        world_ = model_->GetWorld();
+
         update_connection_ =
             event::Events::ConnectWorldUpdateBegin(
                 std::bind(&BuoyancyPlugin::OnUpdate, this));
 
-        gzmsg << "Fishbot buoyancy plugin loaded\n";
+        gzmsg << "Fishbot dynamic-COM buoyancy plugin loaded\n";
     }
 
 private:
-
     void OnUpdate()
     {
-        const double buoyancy_force = 42.16;
+        const auto links = model_->GetLinks();
 
-        ignition::math::Vector3d force(
-            0.0,
-            0.0,
-            buoyancy_force);
+        double total_mass = 0.0;
+        ignition::math::Vector3d weighted_position =
+            ignition::math::Vector3d::Zero;
 
-        // Center of buoyancy relative to base_link frame
-        ignition::math::Vector3d cob(
-            0.0,  // Forward/backward
-            0.0,   // Left/right
-            0.0);  // Up/down
+        // Calculate instantaneous COM of the complete articulated fishbot
+        for (const auto &link : links)
+        {
+            if (!link || !link->GetInertial())
+                continue;
 
-        base_link_->AddForceAtRelativePosition(force, cob);
+            const double mass = link->GetInertial()->Mass();
+
+            // Position of this link's centre of gravity in world coordinates
+            const ignition::math::Vector3d link_com_world =
+                link->WorldCoGPose().Pos();
+
+            weighted_position += mass * link_com_world;
+            total_mass += mass;
+        }
+
+        if (total_mass <= 0.0)
+            return;
+
+        const ignition::math::Vector3d model_com_world =
+            weighted_position / total_mass;
+
+        // Read gravity from the Gazebo world instead of hard-coding 9.81
+        const ignition::math::Vector3d gravity =
+            world_->Gravity();
+
+        // Equal and opposite to the model's total weight
+        const ignition::math::Vector3d buoyancy_force =
+            -total_mass * gravity;
+
+        // Apply the resultant buoyancy at the instantaneous model COM
+        base_link_->AddForceAtWorldPosition(
+            buoyancy_force,
+            model_com_world);
     }
 
 private:
-
     physics::ModelPtr model_;
     physics::LinkPtr base_link_;
+    physics::WorldPtr world_;
     event::ConnectionPtr update_connection_;
 };
 
