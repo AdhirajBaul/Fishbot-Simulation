@@ -27,16 +27,14 @@
 
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0"/>
-
-      <mass value="4.00"/>
-
+      <mass value="3.31"/>
       <inertia
-          ixx="0.01208"
-          ixy="0"
-          ixz="0"
-          iyy="0.03333"
-          iyz="0"
-          izz="0.03750"/>
+      ixx="0.01034"
+      ixy="0.0"
+      ixz="0.0"
+      iyy="0.02758"
+      iyz="0.0"
+      izz="0.03172"/>
     </inertial>
 
   </link>
@@ -73,16 +71,17 @@
       <origin xyz="-0.06 0 0"
               rpy="0 0 0"/>
 
-      <mass value="0.15"/>
+      <mass value="0.66"/>
 
       <inertia
-          ixx="0.000216"
-          ixy="0"
-          ixz="0"
-          iyy="0.000130"
-          iyz="0"
-          izz="0.000336"/>
+        ixx="0.00095"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.00057"
+        iyz="0.0"
+        izz="0.00148"/>
     </inertial>
+
   </link>
 
   <!-- Tail Joint -->
@@ -139,16 +138,16 @@
       <origin xyz="0 0.03 0"
               rpy="0 0 0"/>
 
-      <mass value="0.03"/>
+      <mass value="0.165"/>
 
       <inertia
-          ixx="0.0000097"
-          ixy="0"
-          ixz="0"
-          iyy="0.0000128"
-          iyz="0"
-          izz="0.0000213"/>
-      </inertial>
+        ixx="0.000053"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.000070"
+        iyz="0.0"
+        izz="0.000117"/>
+    </inertial>
 
   </link>
 
@@ -206,16 +205,16 @@
       <origin xyz="0 -0.03 0"
               rpy="0 0 0"/>
 
-      <mass value="0.03"/>
+      <mass value="0.165"/>
 
       <inertia
-          ixx="0.0000097"
-          ixy="0"
-          ixz="0"
-          iyy="0.0000128"
-          iyz="0"
-          izz="0.0000213"/>
-      </inertial>
+        ixx="0.000053"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.000070"
+        iyz="0.0"
+        izz="0.000117"/>
+    </inertial>
 
   </link>
 
@@ -315,6 +314,26 @@
   <plugin
       name="fishbot_thrust"
       filename="libthrust_plugin.so">
+
+    <thrust_coefficient>0.5</thrust_coefficient>
+
+    <steering_coefficient>0.5</steering_coefficient>
+
+    <velocity_filter_alpha>0.9</velocity_filter_alpha>
+
+    <water_density>1000.0</water_density>
+
+    <tail_area>0.013</tail_area>
+
+    <tail_lever_length>0.06</tail_lever_length>
+
+  </plugin>
+</gazebo>
+
+<gazebo>
+  <plugin
+      name="fishbot_fin_hydrodynamics"
+      filename="libfin_hydrodynamics_plugin.so">
   </plugin>
 </gazebo>
 

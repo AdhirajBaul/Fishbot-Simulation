@@ -38,11 +38,20 @@ target_link_libraries(thrust_plugin
   ${GAZEBO_LIBRARIES}
 )
 
+add_library(fin_hydrodynamics_plugin SHARED
+  src/fin_hydrodynamics_plugin.cpp
+)
+
+target_link_libraries(fin_hydrodynamics_plugin
+  ${GAZEBO_LIBRARIES}
+)
+
 install(
   TARGETS
     buoyancy_plugin
     drag_plugin
     thrust_plugin
+    fin_hydrodynamics_plugin
   LIBRARY DESTINATION lib
 )
 

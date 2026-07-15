@@ -6,6 +6,7 @@ import termios
 
 import rclpy
 from rclpy.node import Node
+
 from std_msgs.msg import Float64
 from std_msgs.msg import Float64MultiArray
 
@@ -13,12 +14,17 @@ from std_msgs.msg import Float64MultiArray
 class FishTeleop(Node):
 
     def __init__(self):
-
         super().__init__('fish_teleop')
 
         self.speed_pub = self.create_publisher(
             Float64,
             '/fish_speed',
+            10
+        )
+
+        self.turn_pub = self.create_publisher(
+            Float64,
+            '/fish_turn',
             10
         )
 
@@ -35,99 +41,93 @@ class FishTeleop(Node):
         )
 
         self.speed = 1.0
+        self.turn_bias = 0.0
+        self.pitch_angle = 0.0
 
-        # Toggle states
-        self.left_fin_state = 1
-        self.right_fin_state = 1
-
-        self.get_logger().info("Fish Teleop Started")
+        self.get_logger().info(
+            'Fish teleop started'
+        )
 
     def publish_speed(self):
-
         msg = Float64()
         msg.data = self.speed
-
         self.speed_pub.publish(msg)
 
-    def publish_fins(self, left, right):
+    def publish_turn(self):
+        msg = Float64()
+        msg.data = self.turn_bias
+        self.turn_pub.publish(msg)
 
+    def publish_fins(self):
         left_msg = Float64MultiArray()
-        left_msg.data = [left]
+        left_msg.data = [self.pitch_angle]
 
         right_msg = Float64MultiArray()
-        right_msg.data = [right]
+        right_msg.data = [self.pitch_angle]
 
         self.left_fin_pub.publish(left_msg)
         self.right_fin_pub.publish(right_msg)
 
-    def speed_control(self):
-
-        # Swimming mode
-        self.publish_fins(0.0, 0.0)
+    def publish_all(self):
         self.publish_speed()
+        self.publish_turn()
+        self.publish_fins()
 
-    def stop(self):
-
-        self.speed = 0.0
-
-        self.publish_speed()
-
-        # Vertical fins for drag
-        self.publish_fins(0.3, 0.3)
-
-    def turn_right(self):
-
-        # Toggle left fin
-        self.left_fin_state *= -1
-
-        self.publish_fins(
-            0.3 * self.left_fin_state,
-            0.0
+    def faster(self):
+        self.speed = min(
+            1.2,
+            self.speed + 0.1
         )
+
+        self.publish_speed()
+
+    def slower(self):
+        self.speed = max(
+            0.0,
+            self.speed - 0.1
+        )
+
+        self.publish_speed()
 
     def turn_left(self):
+        self.turn_bias = -0.2
+        self.publish_turn()
 
-        # Toggle right fin
-        self.right_fin_state *= -1
+    def turn_right(self):
+        self.turn_bias = 0.2
+        self.publish_turn()
 
-        self.publish_fins(
-            0.0,
-            0.3 * self.right_fin_state
-        )
+    def swim_straight(self):
+        self.turn_bias = 0.0
+        self.publish_turn()
 
-    def pitch(self):
+    def pitch_up(self):
+        self.pitch_angle = 0.20
+        self.publish_fins()
 
-        self.left_fin_state *= -1
-        self.right_fin_state *= -1
+    def pitch_down(self):
+        self.pitch_angle = -0.20
+        self.publish_fins()
 
-        self.publish_fins(
-            0.3 * self.left_fin_state,
-            0.3 * self.right_fin_state
-        )
+    def neutral_fins(self):
+        self.pitch_angle = 0.0
+        self.publish_fins()
 
-    def roll_clockwise(self):
+    def stop(self):
+        self.speed = 0.0
+        self.turn_bias = 0.0
+        self.pitch_angle = 0.0
 
-        self.publish_fins(
-            0.3,
-            -0.3
-        )
-
-    def roll_anticlockwise(self):
-
-        self.publish_fins(
-            -0.3,
-            0.3
-        )
+        self.publish_all()
 
 
 def get_key():
-
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
 
     try:
         tty.setraw(fd)
-        key = sys.stdin.read(1)
+        return sys.stdin.read(1)
 
     finally:
         termios.tcsetattr(
@@ -136,99 +136,75 @@ def get_key():
             old_settings
         )
 
-    return key
-
 
 def main(args=None):
-
     rclpy.init(args=args)
 
     node = FishTeleop()
+    node.publish_all()
 
     print(
         "\n"
         "W = Faster\n"
         "S = Slower\n"
-        "A = Turn Left (toggle right fin)\n"
-        "D = Turn Right (toggle left fin)\n"
-        "P = Pitch\n"
-        "E = Roll Clockwise\n"
-        "R = Roll Anti-Clockwise\n"
+        "A = Turn Left\n"
+        "D = Turn Right\n"
+        "X = Straighten Tail\n"
+        "I = Pitch Up\n"
+        "K = Pitch Down\n"
+        "O = Neutral Pectoral Fins\n"
         "SPACE = Stop\n"
         "Q = Quit\n"
     )
 
     try:
-
         while True:
-
-            key = get_key()
+            key = get_key().lower()
 
             if key == 'w':
-
-                node.speed += 0.2
-
-                node.speed_control()
-
-                print(f"Speed: {node.speed:.1f}")
+                node.faster()
+                print(f"Speed: {node.speed:.1f} Hz")
 
             elif key == 's':
-
-                node.speed = max(
-                    0.0,
-                    node.speed - 0.2
-                )
-
-                node.speed_control()
-
-                print(f"Speed: {node.speed:.1f}")
+                node.slower()
+                print(f"Speed: {node.speed:.1f} Hz")
 
             elif key == 'a':
-
                 node.turn_left()
-
-                print("Turn Left")
+                print("Turning left")
 
             elif key == 'd':
-
                 node.turn_right()
+                print("Turning right")
 
-                print("Turn Right")
+            elif key == 'x':
+                node.swim_straight()
+                print("Tail centred")
 
-            elif key == 'p':
+            elif key == 'i':
+                node.pitch_up()
+                print("Pitching up")
 
-                node.pitch()
+            elif key == 'k':
+                node.pitch_down()
+                print("Pitching down")
 
-                print("Pitch")
-
-            elif key == 'e':
-
-                node.roll_clockwise()
-
-                print("Roll Clockwise")
-
-            elif key == 'r':
-
-                node.roll_anticlockwise()
-
-                print("Roll Anti-Clockwise")
+            elif key == 'o':
+                node.neutral_fins()
+                print("Pectoral fins neutral")
 
             elif key == ' ':
-
                 node.stop()
-
                 print("Stopped")
 
             elif key == 'q':
-
+                node.stop()
                 break
 
     except KeyboardInterrupt:
-
-        pass
+        node.stop()
 
     node.destroy_node()
-
     rclpy.shutdown()
 
 
