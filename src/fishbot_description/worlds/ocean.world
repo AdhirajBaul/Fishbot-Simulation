@@ -2,7 +2,13 @@
 <sdf version="1.6">
 
   <world name="ocean_world">
-
+    
+    <gui>
+      <plugin
+      name="fishbot_keyboard"
+      filename="libfishbot_keyboard_gui.so"/>
+    </gui>
+    
     <!-- Physics -->
     <physics type="ode">
       <real_time_update_rate>1000</real_time_update_rate>
