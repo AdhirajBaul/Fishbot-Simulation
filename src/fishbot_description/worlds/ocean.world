@@ -1,71 +1,271 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
+
 <sdf version="1.6">
 
   <world name="ocean_world">
-    
-    <gui>
-      <plugin
-      name="fishbot_keyboard"
-      filename="libfishbot_keyboard_gui.so"/>
-    </gui>
-    
+
+    <!-- ================================================= -->
     <!-- Physics -->
-    <physics type="ode">
-      <real_time_update_rate>1000</real_time_update_rate>
+    <!-- ================================================= -->
+
+    <physics name="underwater_physics" type="ode">
+
       <max_step_size>0.001</max_step_size>
+      <real_time_update_rate>1000</real_time_update_rate>
+
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>50</iters>
+          <sor>1.3</sor>
+        </solver>
+
+        <constraints>
+          <cfm>0.0</cfm>
+          <erp>0.2</erp>
+          <contact_max_correcting_vel>
+            100
+          </contact_max_correcting_vel>
+          <contact_surface_layer>
+            0.001
+          </contact_surface_layer>
+        </constraints>
+      </ode>
+
     </physics>
 
-    <!-- Sun -->
-    <include>
-      <uri>model://sun</uri>
-    </include>
+    <gravity>0 0 -9.81</gravity>
 
-    <!-- Ambient underwater lighting -->
+    <!-- ================================================= -->
+    <!-- Underwater scene -->
+    <!-- ================================================= -->
+
     <scene>
-      <ambient>0.2 0.3 0.4 1</ambient>
-      <background>0.0 0.15 0.3 1</background>
 
+      <!-- Dim blue-green underwater ambient light -->
+      <ambient>0.04 0.12 0.16 1</ambient>
+
+      <background>0.02 0.10 0.14 1</background>
+
+      <shadows>true</shadows>
+
+      <!-- Limited underwater visibility -->
       <fog>
-        <color>0.0 0.2 0.4 1</color>
         <type>linear</type>
-        <start>5</start>
-        <end>50</end>
+        <color>0.04 0.20 0.25 1</color>
+        <start>2.0</start>
+        <end>18.0</end>
+        <density>0.05</density>
       </fog>
+
     </scene>
 
+    <!-- ================================================= -->
+    <!-- Light entering from the surface -->
+    <!-- ================================================= -->
+
+    <light name="underwater_sun" type="directional">
+
+      <cast_shadows>true</cast_shadows>
+
+      <pose>0 0 10 0 0 0</pose>
+
+      <diffuse>0.45 0.60 0.62 1</diffuse>
+      <specular>0.08 0.12 0.12 1</specular>
+
+      <direction>0.2 0.1 -1.0</direction>
+
+    </light>
+
+    <!-- Soft secondary light -->
+    <light name="underwater_fill_light" type="point">
+
+      <cast_shadows>false</cast_shadows>
+
+      <pose>0 0 1 0 0 0</pose>
+
+      <diffuse>0.08 0.18 0.22 1</diffuse>
+      <specular>0.02 0.04 0.05 1</specular>
+
+      <attenuation>
+        <range>15</range>
+        <constant>0.4</constant>
+        <linear>0.08</linear>
+        <quadratic>0.02</quadratic>
+      </attenuation>
+
+    </light>
+
+    <!-- ================================================= -->
     <!-- Seabed -->
+    <!-- ================================================= -->
+
     <model name="seabed">
+
       <static>true</static>
 
-      <link name="link">
+      <pose>0 0 -5.25 0 0 0</pose>
 
-        <visual name="visual">
-          <pose>0 0 -2 0 0 0</pose>
+      <link name="seabed_link">
+
+        <collision name="seabed_collision">
 
           <geometry>
             <box>
-              <size>50 50 1</size>
+              <size>30 30 0.5</size>
+            </box>
+          </geometry>
+
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.8</mu>
+                <mu2>0.8</mu2>
+              </ode>
+            </friction>
+          </surface>
+
+        </collision>
+
+        <visual name="seabed_visual">
+
+          <geometry>
+            <box>
+              <size>30 30 0.5</size>
             </box>
           </geometry>
 
           <material>
-            <ambient>0.75 0.70 0.50 1</ambient>
-            <diffuse>0.75 0.70 0.50 1</diffuse>
+            <ambient>0.18 0.16 0.10 1</ambient>
+            <diffuse>0.32 0.28 0.17 1</diffuse>
+            <specular>0.03 0.03 0.02 1</specular>
+          </material>
+
+        </visual>
+
+      </link>
+
+    </model>
+
+    <!-- ================================================= -->
+    <!-- Visible water surface -->
+    <!-- ================================================= -->
+
+    <model name="water_surface">
+
+      <static>true</static>
+
+      <pose>0 0 3 0 0 0</pose>
+
+      <link name="surface_link">
+
+        <!-- Visual only: no collision -->
+        <visual name="surface_visual">
+
+          <cast_shadows>false</cast_shadows>
+
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>30 30</size>
+            </plane>
+          </geometry>
+
+          <material>
+            <ambient>0.05 0.25 0.35 0.35</ambient>
+            <diffuse>0.08 0.35 0.48 0.35</diffuse>
+            <specular>0.4 0.5 0.5 0.35</specular>
+          </material>
+
+          <transparency>0.55</transparency>
+
+        </visual>
+
+      </link>
+
+    </model>
+
+    <!-- ================================================= -->
+    <!-- Example rocks -->
+    <!-- ================================================= -->
+
+    <model name="rock_1">
+
+      <static>true</static>
+
+      <pose>3 2 -4.55 0.1 0.2 0.4</pose>
+
+      <link name="rock_link">
+
+        <collision name="rock_collision">
+          <geometry>
+            <sphere>
+              <radius>0.45</radius>
+            </sphere>
+          </geometry>
+        </collision>
+
+        <visual name="rock_visual">
+          <geometry>
+            <sphere>
+              <radius>0.45</radius>
+            </sphere>
+          </geometry>
+
+          <material>
+            <ambient>0.12 0.13 0.11 1</ambient>
+            <diffuse>0.22 0.24 0.20 1</diffuse>
           </material>
         </visual>
 
-        <collision name="collision">
-          <pose>0 0 -2 0 0 0</pose>
+      </link>
 
+    </model>
+
+    <model name="rock_2">
+
+      <static>true</static>
+
+      <pose>-3 -1 -4.65 0.2 -0.1 0.8</pose>
+
+      <link name="rock_link">
+
+        <collision name="rock_collision">
           <geometry>
             <box>
-              <size>50 50 1</size>
+              <size>1.2 0.8 0.7</size>
             </box>
           </geometry>
         </collision>
 
+        <visual name="rock_visual">
+          <geometry>
+            <box>
+              <size>1.2 0.8 0.7</size>
+            </box>
+          </geometry>
+
+          <material>
+            <ambient>0.10 0.11 0.10 1</ambient>
+            <diffuse>0.20 0.22 0.19 1</diffuse>
+          </material>
+        </visual>
+
       </link>
+
     </model>
+
+    <!-- ================================================= -->
+    <!-- Gazebo keyboard plugin -->
+    <!-- ================================================= -->
+
+    <gui fullscreen="0">
+
+      <plugin
+          name="fishbot_keyboard"
+          filename="libfishbot_keyboard_gui.so"/>
+
+    </gui>
 
   </world>
 

@@ -8,9 +8,10 @@
   <link name="base_link">
 
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="3.1416 0 -1.5708"/>
       <geometry>
-        <box size="0.3 0.15 0.1"/>
+        <mesh filename="src/fishbot_description/meshes/base_link.stl"
+        scale="0.001 0.001 0.001"/>
       </geometry>
 
       <material name="blue">
@@ -19,14 +20,15 @@
     </visual>
 
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 1.5708"/>
       <geometry>
-        <box size="0.3 0.15 0.1"/>
+        <mesh filename="src/fishbot_description/meshes/base_link.stl" 
+        scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
 
     <inertial>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 1.5708"/>
       <mass value="3.31"/>
       <inertia
       ixx="0.01034"
@@ -46,11 +48,12 @@
   <link name="tail_link">
 
     <visual>
-      <origin xyz="-0.06 0 0"
-              rpy="1.5708 1.5708 0"/>
+      <origin xyz="0 0 0"
+              rpy="3.1416 3.1416 4.7124"/>
 
       <geometry>
-        <box size="0.10 0.13 0.02"/>
+        <mesh filename="src/fishbot_description/meshes/tail_link.stl" 
+        scale="0.001 0.001 0.001"/>
       </geometry>
 
       <material name="red">
@@ -63,7 +66,8 @@
               rpy="1.5708 1.5708 0"/>
 
       <geometry>
-        <box size="0.10 0.13 0.02"/>
+        <mesh filename="src/fishbot_description/meshes/tail_link.stl" 
+        scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
 
@@ -88,7 +92,7 @@
 
   <joint name="tail_joint" type="revolute">
 
-    <origin xyz="-0.15 0 0"
+    <origin xyz="-0.065 0 0"
             rpy="0 0 0"/>
 
     <parent link="base_link"/>
@@ -113,11 +117,12 @@
   <link name="left_fin_link">
 
     <visual>
-      <origin xyz="0 0.03 0"
-              rpy="0 0 0"/>
+      <origin xyz="0 -0.07 0"
+              rpy="0 0 1.5708"/>
 
       <geometry>
-        <box size="0.07 0.06 0.015"/>
+        <mesh filename="src/fishbot_description/meshes/left_fin_link.stl" 
+        scale="0.001 0.001 0.001"/>
       </geometry>
 
       <material name="light_blue">
@@ -130,7 +135,8 @@
               rpy="0 0 0"/>
 
       <geometry>
-        <box size="0.07 0.06 0.015"/>
+        <mesh filename="src/fishbot_description/meshes/left_fin_link.stl" 
+        scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
 
@@ -180,11 +186,12 @@
   <link name="right_fin_link">
 
     <visual>
-      <origin xyz="0 -0.03 0"
-              rpy="0 0 0"/>
+      <origin xyz="0 0.07 0"
+              rpy="0 0 1.5708"/>
 
       <geometry>
-        <box size="0.07 0.06 0.015"/>
+        <mesh filename="src/fishbot_description/meshes/right_fin_link.stl" 
+        scale="0.001 0.001 0.001"/>
       </geometry>
 
       <material name="light_blue">
@@ -197,7 +204,8 @@
               rpy="0 0 0"/>
 
       <geometry>
-        <box size="0.07 0.06 0.015"/>
+        <mesh filename="src/fishbot_description/meshes/right_fin_link.stl" 
+        scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
 

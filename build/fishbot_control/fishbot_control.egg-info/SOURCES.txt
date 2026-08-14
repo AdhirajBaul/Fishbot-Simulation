@@ -13,7 +13,11 @@ fishbot_control/fish_swimmer.py
 fishbot_control/fish_teleop.py
 fishbot_control/swim_command_listener.py
 fishbot_control/swim_command_publisher.py
+fishbot_control.egg-info/PKG-INFO
+fishbot_control.egg-info/SOURCES.txt
+fishbot_control.egg-info/dependency_links.txt
+fishbot_control.egg-info/entry_points.txt
+fishbot_control.egg-info/requires.txt
+fishbot_control.egg-info/top_level.txt
+fishbot_control.egg-info/zip-safe
 resource/fishbot_control
-test/test_copyright.py
-test/test_flake8.py
-test/test_pep257.py

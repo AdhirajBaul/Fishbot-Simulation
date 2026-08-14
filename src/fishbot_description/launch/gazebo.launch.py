@@ -96,6 +96,13 @@ def generate_launch_description():
     output='screen'
     )
 
+    fish_swimmer_node = Node(
+    package='fishbot_control',
+    executable='fish_swimmer',
+    name='fish_swimmer',
+    output='screen'
+    )
+
     return LaunchDescription([
         gazebo,
         robot_state_publisher,
@@ -104,4 +111,5 @@ def generate_launch_description():
         tail_controller_spawner,
         left_fin_controller_spawner,
         right_fin_controller_spawner,
+        fish_swimmer_node,
     ])
